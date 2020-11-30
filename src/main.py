@@ -1,6 +1,7 @@
 import click
 import json
 import importlib
+import colorama
 
 
 @click.group("pyct")
