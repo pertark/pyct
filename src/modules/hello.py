@@ -2,7 +2,7 @@ import click
 
 
 @click.command("hello")
-@click.option("--name", help="The person to greet", required=False)
+@click.option("--name", "-n", help="The person to greet", required=False)
 def hello(name):
 	if name:
 		click.echo('Hello %s!' % name)
