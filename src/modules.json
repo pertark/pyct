@@ -2,6 +2,7 @@
   "modules": [
     "hello",
 	"weather",
-	"long"
+	"long",
+	"stocks"
   ]
 }
