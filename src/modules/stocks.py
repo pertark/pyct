@@ -3,7 +3,7 @@ import requests
 import json
 from colors import Colors as c
 
-@click.command("stocks")
+@click.command("stocks", help="Stock information on a company")
 @click.argument("company")
 def stocks(company):
   click.echo(get_profile(company))
