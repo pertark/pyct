@@ -3,7 +3,7 @@ from colors import Colors as c
 import requests
 import json
 
-@click.command("long")
+@click.command("long", help="Gives all redirects from a URL")
 @click.argument("url")
 def long(url):
   try:

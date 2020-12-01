@@ -1,7 +1,7 @@
 import click
 import requests
 
-@click.command("weather")
+@click.command("weather", help="Weather information")
 def weather():
   click.echo(get_weather())
 
