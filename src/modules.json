@@ -1,6 +1,7 @@
 {
   "modules": [
     "hello",
-	"weather"
+	"weather",
+	"long"
   ]
 }
