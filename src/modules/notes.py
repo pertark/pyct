@@ -8,7 +8,7 @@ def notes():
   pass
 
 
-def notesconfig():
+def getnotes():
   homedir = os.path.expanduser("~")
   try:
     with open(homedir + "/.pyct/notes.json", "r") as f:
@@ -20,10 +20,20 @@ def notesconfig():
       json.dump({}, tmp)
     return {}
 
+def setnotes(js):
+  homedir = os.path.expanduser("~")
+  try:
+    with open(homedir + "/.pyct/notes.json", "w") as f:
+      json.dump(js, f)
+  except IOError:
+    os.mkdir(homedir + "/.pyct")
+    with open(homedir + "/.pyct/notes.json", "w") as tmp:
+      json.dump(js, tmp)
+
 
 @click.command("add")
 def add():
-  click.echo(notesconfig())
+  click.echo(getnotes())
 
 
 notes.add_command(add)
