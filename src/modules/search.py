@@ -10,6 +10,9 @@ import json
               help="Selects an engine to search. ", type=str)
 @click.argument("query", nargs=-1)
 def search(engine, query):
+  if not query:
+    click.echo('No query.')
+    return
   engine = engine.lower()
   if engine == 'ddg' or engine == 'duckduckgo':
     ddg(query)
