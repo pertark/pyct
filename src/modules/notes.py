@@ -167,7 +167,8 @@ def rm(number, force):
     q = input(c.BOLD + c.RED + "Do you really want to remove this? [y/n] " + c.END)
     if q.lower() != "y":
       return
-  del notes["notes"][number-1]
+  del notes["notes"][len(notes["notes"])-number]
+
   setnotes(notes)
 
 @click.command("edit", help="Edits a specific note [Number is based on the pyct notes ls -a list] ")
@@ -178,7 +179,7 @@ def edit(number, note):
   if not (len(notes["notes"]) >= number and number > 0):
     click.echo(c.BOLD + c.RED + "Incorrect note to edit. ")
     return
-  notes["notes"][number-1][2] = note
+  notes["notes"][len(notes["notes"])-number][2] = note
   setnotes(notes)
 
 notes.add_command(add)
