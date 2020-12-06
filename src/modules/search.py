@@ -6,7 +6,8 @@ import json
 
 
 @click.command('search', help="search with various engines")
-@click.option("--engine", "-e", default='ddg', nargs=1)
+@click.option("--engine", "-e", default='ddg', nargs=1,
+              help="Selects an engine to search. ", type=str)
 @click.argument("query", nargs=-1)
 def search(engine, query):
   engine = engine.lower()
