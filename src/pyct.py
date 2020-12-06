@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 import click
 import json
 import importlib
@@ -25,8 +24,9 @@ class Pyct:
 
 
 def main():
-  fil = json.load(open('/'.join(__file__.split("/")[:-1]) + "/modules.json"))
-  Pyct(fil)
+  file = json.load(open('/'.join(__file__.split("/")[:-1]) + "/modules.json"))
+  Pyct(file)
+
 
 if __name__ == "__main__":
-    main()
+  main()
