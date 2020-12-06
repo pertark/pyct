@@ -1,7 +1,7 @@
 import click
 import requests
 from bs4 import BeautifulSoup
-import sys
+from colors import Colors as c
 import json
 
 
@@ -11,15 +11,15 @@ import json
 @click.argument("query", nargs=-1)
 def search(engine, query):
   if not query:
-    click.echo('No query.')
+    click.echo(c.BOLD + c.RED + 'No query.')
     return
   engine = engine.lower()
   if engine == 'ddg' or engine == 'duckduckgo':
     ddg(query)
   elif engine == 'stackoverflow' or engine == 'so':
-    click.echo('wip')
+    click.echo(c.BOLD + c.RED + 'wip')
   else:
-    click.echo(f'No engine "{engine}". Defaulting to DuckDuckGo.')
+    click.echo(c.BOLD + c.RED + f'No engine "{engine}". Defaulting to DuckDuckGo.')
     ddg(query)
 
 # @click.argument("query", nargs=-1)
