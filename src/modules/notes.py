@@ -178,7 +178,7 @@ def edit(number, note):
   if not (len(notes["notes"]) >= number and number > 0):
     click.echo(c.BOLD + c.RED + "Incorrect note to edit. ")
     return
-  notes["notes"][number-1] = note
+  notes["notes"][number-1][2] = note
   setnotes(notes)
 
 notes.add_command(add)
