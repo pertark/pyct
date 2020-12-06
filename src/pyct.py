@@ -25,9 +25,8 @@ class Pyct:
 
 
 def main():
-  file = json.load(open('/'.join(__file__.split("/")[:-1]) + "/modules.json"))
-  Pyct(file)
-
+  fil = json.load(open('/'.join(__file__.split("/")[:-1]) + "/modules.json"))
+  Pyct(fil)
 
 if __name__ == "__main__":
-  main()
+    main()

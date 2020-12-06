@@ -3,7 +3,6 @@ import requests
 from bs4 import BeautifulSoup
 import sys
 
-print(sys.version)
 
 @click.group("search", help="search various search engines",
              invoke_without_command=True)
