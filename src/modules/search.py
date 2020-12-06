@@ -11,15 +11,15 @@ import json
 @click.argument("query", nargs=-1)
 def search(engine, query):
   if not query:
-    click.echo(c.BOLD + c.RED + 'No query.')
+    click.echo(c.BOLD + c.RED + 'No query.' + c.END)
     return
   engine = engine.lower()
   if engine == 'ddg' or engine == 'duckduckgo':
     ddg(query)
   elif engine == 'stackoverflow' or engine == 'so':
-    click.echo(c.BOLD + c.RED + 'wip')
+    click.echo(c.BOLD + c.RED + 'wip' + c.END)
   else:
-    click.echo(c.BOLD + c.RED + f'No engine "{engine}". Defaulting to DuckDuckGo.')
+    click.echo(c.BOLD + c.RED + f'No engine "{engine}". Defaulting to DuckDuckGo.' + c.END)
     ddg(query)
 
 # @click.argument("query", nargs=-1)
