@@ -2,11 +2,21 @@ import click
 import socket
 import os
 from colors import Colors as c
+import threading
+import sys
 
 @click.group(help="Send and recieve messages. ")
 def msg():
     pass
 
+def recieve(conn):
+    while True:
+        data = conn.recv(1028)
+        if not data:
+            break
+        else:
+            click.echo(c.CYAN + c.BOLD + "> " + c.END + data.decode())
+    conn.close()
 
 @click.command("host", help="Hosts a connection between two people to chat. ")
 @click.argument("ip")
@@ -24,11 +34,17 @@ def host(ip):
         else:
             break
     click.echo(c.GREEN + c.BOLD + "Connected to " + ip + "!" + c.END)
+    recv = threading.Thread(target=recieve, args=(conn,))
+    recv.daemon = True
+    recv.start()
     while True:
-        t = input("> ").encode()
-        conn.send(t)
-        print(conn.recv(BUF).decode())
-
+        r = input()
+        try:
+            conn.send(r.encode())
+        except:
+            break
+    click.echo(c.RED + c.BOLD + "Connection closed. ")
+    sys.exit(0)
 
 
 @click.command("conn", help="Connects to an address to create a chatroom. ")
@@ -40,13 +56,20 @@ def conn(ip):
         click.echo(c.YELLOW + c.BOLD + "Connecting... ")
         s.connect((ip, 69))
         click.echo(c.GREEN + c.BOLD + "Connected to " + ip + "!" + c.END)
+        recv = threading.Thread(target=recieve, args=(s,))
+        recv.daemon = True
+        recv.start()
         while True:
-            print(s.recv(BUF).decode())
-            t = input("> ").encode()
-            s.send(t)
+            r = input()
+            try:
+                s.send(r.encode())
+            except:
+                break
+        click.echo(c.RED + c.BOLD + "Connection closed. ")
+        sys.exit(0)
     except socket.error:
         click.echo(c.RED + c.BOLD + "Socket error. Unable to connect to " + ip + ".")
-        return
+        sys.exit(1)
 
 msg.add_command(host)
 msg.add_command(conn)
