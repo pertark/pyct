@@ -6,7 +6,14 @@
 	"stocks",
 	"isup",
 	"notes",
+<<<<<<< Updated upstream
 	"search"
 
+=======
+	"search",
+	"msg",
+	"lyrics",
+	"meme"
+>>>>>>> Stashed changes
   ]
 }
