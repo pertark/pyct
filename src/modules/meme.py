@@ -72,7 +72,8 @@ def generate(template, filetype, output, width, height):
   
   p = requests.get(url, params=dimensions)
   if not os.path.exists(output):
-    os.makedirs(output[:output.rindex('/')])
+    if output.count('/') != 0:
+      os.makedirs(output[:output.rindex('/')])
   with open(output,'wb') as f:
     f.write(p.content)
 
