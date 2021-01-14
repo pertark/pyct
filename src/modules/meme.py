@@ -41,7 +41,9 @@ def sanitize(text):
               help="width of meme", type=int)
 @click.option("--height", "-h", required=False, default=0,
               help="height of meme", type=int)
-def generate(template, filetype, output, width, height):
+@click.option("--style", "-s", required=False,
+              help="style of a template", type=int)
+def generate(template, filetype, output, width, height, style):
   templates = get_templates()
   keys = [tp['key'] for tp in templates]
   if template not in keys:
@@ -70,6 +72,8 @@ def generate(template, filetype, output, width, height):
     dimensions['width'] = width
   if height > 0:
     dimensions['height'] = height
+  if style:
+    dimensions['style'] = style
   
   p = requests.get(url, params=dimensions)
   if not os.path.exists(output):

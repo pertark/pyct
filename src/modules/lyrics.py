@@ -10,7 +10,8 @@ from colors import Colors as c
               help="name of song")
 def lyrics(artist, song):
   p = requests.get('https://api.lyrics.ovh/v1/{}/{}'.format(artist, song))
-  lyrics = json.loads(p.text)['lyrics']
+  click.echo(p.status_code)
+  lyrics = p.json()['lyrics']
   click.echo(lyrics)
 
 
