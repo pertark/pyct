@@ -14,10 +14,12 @@ def get_templates():
     with open(homedir+'/.pyct/meme_templates.json') as f:
       templates = json.loads(f.read())
   except:
-    os.mkdir(homedir + "/.pyct")
-    templates = json.loads(requests.get('https://api.memegen.link/templates/').text)
-    with open(homedir+'/.pyct/meme_templates.json','w') as f:
-      json.dump(templates, f)
+    try:
+      os.mkdir(homedir + "/.pyct")
+    except:
+      templates = json.loads(requests.get('https://api.memegen.link/templates/').text)
+      with open(homedir+'/.pyct/meme_templates.json','w') as f:
+        json.dump(templates, f)
 
   return templates
 
