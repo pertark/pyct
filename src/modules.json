@@ -1,12 +1,15 @@
 {
   "modules": [
-    	"hello",
+   "hello",
 	"weather",
 	"long",
 	"stocks",
 	"isup",
 	"notes",
 	"search",
+	"lyrics",
+	"meme",
+	"movie"
 	"msg"
   ]
 }
