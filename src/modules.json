@@ -1,12 +1,12 @@
 {
   "modules": [
-    "hello",
+    	"hello",
 	"weather",
 	"long",
 	"stocks",
 	"isup",
 	"notes",
-	"search"
-
+	"search",
+	"msg"
   ]
 }
