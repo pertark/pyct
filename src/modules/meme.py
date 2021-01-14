@@ -48,6 +48,7 @@ def generate(template, filetype, output, width, height):
     click.echo('No meme template with key \''+template+'\'')
     return
   lines = templates[keys.index(template)]['lines']
+  click.echo(str(lines)+" lines total: ")
   content = [sanitize(input('Line '+str(n+1)+': ')) for n in range(lines)]
   content = '/'.join(content)
   if '.' not in output:
