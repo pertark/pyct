@@ -12,7 +12,7 @@ def peepeega_calc(equation):
   if (equation == ""):
     print("Invalid input.")
     exit(1)
-  return eval(equation)
+  return eval(equation.replace("^", "**").replace(" xor ", "^"))
 
 def load():
   return [calc]
